@@ -1,0 +1,205 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Study Sprint</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--n:#0B1426;--i:#F4EEDF;--g:#C9A96A;--s:#9DB09A;--gr:#8A8F98;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box;margin:0}
+body{font:400 16px/1.6 Manrope,system-ui,sans-serif;background:var(--bg);color:var(--fg);transition:background .6s,color .6s;min-height:100vh}
+body.dk{--bg:var(--n);--fg:var(--i);--gb:rgba(244,238,223,.3);--gf:rgba(244,238,223,.09)}
+body.iv{--bg:var(--i);--fg:var(--n);--gb:rgba(11,20,38,.28);--gf:rgba(11,20,38,.06)}
+@media(hover:hover){body,a,button{cursor:none}}
+h1,h2,h3{font-family:'DM Serif Display',Georgia,serif;font-weight:400;line-height:1.08}
+h1{font-size:clamp(2.6rem,7vw,5.4rem)}h2{font-size:clamp(2rem,4.6vw,3.6rem)}
+.ey{letter-spacing:.2em;text-transform:uppercase;font-size:.75rem;color:var(--g);margin-bottom:1rem}
+#cv{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.fx{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(60% 50% at 25% 20%,rgba(157,176,154,.16),transparent 70%),radial-gradient(50% 50% at 80% 80%,rgba(201,169,106,.14),transparent 70%)}
+.fx::after{content:"";position:absolute;inset:0;opacity:.07;background:repeating-radial-gradient(circle at 30% 20%,var(--fg) 0 1px,transparent 1px 3px)}
+main{position:relative;z-index:2;padding-left:200px}
+.pg{max-width:1000px;margin:0 auto;padding:12vh 24px 10vh}
+.full{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:10vh 6vw;gap:1.4rem}
+.full.r{align-items:flex-end;text-align:right}.full p{max-width:34ch}
+.full.iv{background:rgba(244,238,223,.9);color:var(--n);--gb:rgba(11,20,38,.28);--gf:rgba(11,20,38,.06)}
+.g{background:linear-gradient(160deg,var(--gf),transparent 80%);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);border:1px solid var(--gb);border-top-color:var(--g);border-radius:24px;padding:1.4rem;position:relative}
+.rf .g,.rf .b{backdrop-filter:url(#lg) blur(10px) saturate(1.4)}
+.g:hover,.b:hover{animation:wob 1.4s ease}
+@keyframes wob{0%,100%{border-radius:24px}33%{border-radius:32px 20px 30px 22px}66%{border-radius:20px 30px 22px 32px}}
+.b{font:600 .95rem Manrope,sans-serif;color:inherit;padding:.8rem 1.6rem;border-radius:999px;border:1px solid var(--gb);background:var(--gf);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:transform .25s cubic-bezier(.3,1.6,.5,1),background .3s;text-decoration:none;display:inline-block}
+.b:active{transform:scale(.94,.9)}.b.p{background:linear-gradient(135deg,rgba(201,169,106,.5),rgba(201,169,106,.18));border-color:var(--g)}
+.b.on{background:rgba(157,176,154,.35);border-color:var(--s)}
+:focus-visible{outline:2px solid var(--g);outline-offset:3px}
+input,select,textarea{font:inherit;color:inherit;background:var(--gf);border:1px solid var(--gb);border-radius:14px;padding:.6rem .9rem;width:100%}
+option{color:var(--n)}label{font-size:.8rem;color:var(--gr);display:block;margin:.8rem 0 .3rem}
+.row{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+.nav{position:fixed;left:16px;top:50%;transform:translateY(-50%);z-index:10;display:flex;flex-direction:column;gap:.2rem;width:170px;padding:1rem .7rem;border-radius:28px;color:var(--i);--gb:rgba(244,238,223,.3);--gf:rgba(11,20,38,.45)}
+.nav a{color:inherit;text-decoration:none;font-size:.85rem;padding:.4rem .8rem;border-radius:999px;transition:background .3s}
+.nav a.a{background:rgba(201,169,106,.3)}.nav small{padding:.6rem .8rem 0;color:var(--gr);font-size:.7rem}
+.nav .logo{font-family:'DM Serif Display',serif;font-size:1.2rem;padding:.2rem .8rem .6rem}
+#mn{display:none}
+.cur,.cur2{position:fixed;left:0;top:0;pointer-events:none;z-index:99;border-radius:50%}
+.cur{width:20px;height:20px;border:1px solid var(--g);background:rgba(244,238,223,.2);backdrop-filter:blur(6px);display:grid;place-items:center;font-size:10px;color:var(--i);transition:width .25s,height .25s}
+.cur.big{width:64px;height:64px}.cur2{width:60px;height:60px;background:radial-gradient(circle,rgba(201,169,106,.3),transparent 70%)}
+.rip{position:fixed;z-index:98;pointer-events:none;border:1px solid var(--g);border-radius:50%;width:10px;height:10px}
+@media(hover:none){.cur,.cur2{display:none}}
+#tr{position:fixed;inset:0;z-index:50;transform:translateY(101%);background:rgba(201,169,106,.22);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);border-top:1px solid var(--g);pointer-events:none}
+#in{position:fixed;inset:0;z-index:60;background:var(--n);color:var(--i);display:grid;place-items:center;font:400 clamp(2.4rem,8vw,5rem) 'DM Serif Display',serif}
+.ring{width:min(280px,70vw);height:min(280px,70vw);display:block;margin:0 auto}
+.ring text{font:400 3rem 'DM Serif Display',serif;fill:currentColor}
+.md{position:fixed;inset:0;z-index:40;display:none;place-items:center;background:rgba(11,20,38,.5)}
+.md .g{width:min(420px,90vw);background:rgba(11,20,38,.8);color:var(--i)}
+.sty{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;margin-top:2rem}
+.sty>*:nth-child(2n){margin-top:3rem}
+.mk{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--gr);display:inline-block;vertical-align:middle;margin-right:.7rem;transition:.4s}
+.mk.h{border-color:var(--g);background:conic-gradient(var(--g) 50%,transparent 0)}.mk.f{border-color:var(--s);background:var(--s)}
+.rv{opacity:0;transform:translateY(30px)}.in .rv{opacity:1;transform:none;transition:1s}
+footer{padding:3rem 24px;text-align:center;color:var(--gr);font-size:.8rem}
+@media(max-width:800px){main{padding-left:0;padding-bottom:90px}.nav{top:auto;bottom:10px;left:10px;right:10px;width:auto;transform:none;flex-direction:row;justify-content:space-around;border-radius:999px;padding:.4rem}
+.nav .logo,.nav small,.nav .x{display:none}.nav.o{flex-direction:column;border-radius:24px}.nav.o .x,.nav.o small{display:block}#mn{display:block}.full.r{align-items:flex-start;text-align:left}.sty>*:nth-child(2n){margin-top:0}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body class="dk">
+<svg width="0" height="0" style="position:absolute"><filter id="lg"><feTurbulence type="fractalNoise" baseFrequency=".012" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="22"/></filter></svg>
+<canvas id="cv"></canvas><div class="fx"></div>
+<nav class="nav g" id="nv" aria-label="Main"><div class="logo">Study Sprint</div>
+<a href="#/home">Home</a><a href="#/timer">Study Timer</a><a href="#/revision">Revision</a><a href="#/exams">Exams</a><a class="x" href="#/offline-privacy">Offline &amp; Privacy</a><a class="x" href="#/get-started">Get Started</a><a href="#" id="mn" onclick="event.preventDefault();$('#nv').classList.toggle('o')">More</a><small>Profile · Settings</small></nav>
+<main id="app"></main><div id="tr"></div><div id="in">Study Sprint</div>
+<div class="md" id="md"><div class="g"><h3>Session complete</h3><label>What did you study?</label><input id="mw" placeholder="Chapter or topic"><label>How productive was it?</label><div class="row" id="mp"><button class="b">Low</button><button class="b on">Okay</button><button class="b">Strong</button></div><label>Notes (optional)</label><textarea id="mt" rows="2"></textarea><div class="row" style="margin-top:1rem"><button class="b p" id="ms">Save session</button><button class="b" id="mx">Discard</button></div></div></div>
+<div class="cur" id="cu"></div><div class="cur2" id="c2"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+const $=(s,e=document)=>e.querySelector(s),$$=(s,e=document)=>[...e.querySelectorAll(s)];
+const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const LS={g:(k,d)=>{try{const v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}},s:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+if(/Chrome/.test(navigator.userAgent))document.documentElement.classList.add('rf');
+let cur='home',prog=.4,mx=0,my=0,timerOn=false;
+
+/* ---------- 3D scene: one persistent canvas, a pose per route ---------- */
+try{(function(){
+const R=new THREE.WebGLRenderer({canvas:$('#cv'),alpha:true,antialias:true});R.setPixelRatio(Math.min(devicePixelRatio,2));
+const S=new THREE.Scene(),C=new THREE.PerspectiveCamera(40,1,.1,50);C.position.z=7;
+S.add(new THREE.AmbientLight(0xF4EEDF,.8));
+const a=new THREE.DirectionalLight(0xC9A96A,1.5);a.position.set(3,4,4);S.add(a);
+const b=new THREE.DirectionalLight(0x9DB09A,.9);b.position.set(-4,-2,3);S.add(b);
+const glass=new THREE.MeshPhysicalMaterial({color:0xF4EEDF,transparent:true,opacity:.3,roughness:.05,clearcoat:1,side:THREE.DoubleSide});
+const gold=new THREE.MeshStandardMaterial({color:0xC9A96A,metalness:.9,roughness:.3}),sage=new THREE.MeshStandardMaterial({color:0x9DB09A,roughness:.5});
+const hg=new THREE.Group(),pts=[];
+for(let i=0;i<=24;i++){const t=i/24;pts.push(new THREE.Vector2(.1+.75*Math.pow(Math.abs(t-.5)*2,1.7),(t-.5)*3))}
+hg.add(new THREE.Mesh(new THREE.LatheGeometry(pts,48),glass));
+[-1.55,1.55].forEach(y=>{const m=new THREE.Mesh(new THREE.CylinderGeometry(1,1,.12,48),gold);m.position.y=y;hg.add(m)});
+const cg=new THREE.ConeGeometry(.7,1.2,32);cg.translate(0,.6,0);
+const sT=new THREE.Mesh(cg,gold);sT.rotation.x=Math.PI;sT.position.y=1.45;const sB=new THREE.Mesh(cg,gold);sB.position.y=-1.45;hg.add(sT,sB);S.add(hg);
+const rings=[0,1,2].map(i=>{const r=new THREE.Mesh(new THREE.TorusGeometry(2+i*.45,.02,16,120),gold);r.rotation.set(i*1.1,i*.6,0);hg.add(r);return r});
+const orbs=[0,1,2,3,4].map(i=>{const o=new THREE.Mesh(new THREE.SphereGeometry(.16+i*.03,24,24),i%2?sage:glass);S.add(o);return o});
+const v=new THREE.Group();v.add(new THREE.Mesh(new THREE.BoxGeometry(2.4,2.4,2.4),glass));
+v.add(new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(2.4,2.4,2.4)),new THREE.LineBasicMaterial({color:0xC9A96A})));
+const dr=new THREE.Mesh(new THREE.CylinderGeometry(.6,.6,.08,48),gold);dr.rotation.x=Math.PI/2;dr.position.z=1.22;v.add(dr);S.add(v);
+const P={home:[0,0,1],timer:[-2.7,0,1.1],revision:[3,0,.75],exams:[-3,0,.75],privacy:[0,0,.001],start:[3,0,.75]};
+const L=(x,y,k)=>x+(y-x)*k;
+function rs(){R.setSize(innerWidth,innerHeight,false);C.aspect=innerWidth/innerHeight;C.updateProjectionMatrix()}rs();addEventListener('resize',rs);
+(function f(t){requestAnimationFrame(f);t*=.001;const p=P[cur]||P.home,k=innerWidth<800?0:1,m=innerWidth<800?.6:1;
+hg.position.x=L(hg.position.x,p[0]*k,.05);hg.position.y=L(hg.position.y,innerWidth<800?1.4:0,.05);
+const sc=L(hg.scale.x,p[2]*m,.05);hg.scale.setScalar(sc);
+hg.rotation.y=RM?0:t*.25+scrollY*.002;rings.forEach((r,i)=>{r.rotation.z=RM?0:t*(.2+i*.1)});
+const pr=timerOn?prog:.5+.5*Math.sin(t*.4);sT.scale.y=Math.max(.01,1-pr);sB.scale.y=Math.max(.01,pr);
+v.scale.setScalar(L(v.scale.x,cur==='privacy'?1:.001,.06));v.rotation.y=RM?.4:t*.2;
+orbs.forEach((o,i)=>{o.position.set(Math.sin(t*.3+i*1.3)*(3.2+i*.2),Math.cos(t*.4+i)*1.8,-1-i*.4)});
+C.position.x=L(C.position.x,RM?0:mx*.5,.04);C.position.y=L(C.position.y,RM?0:-my*.3,.04);C.lookAt(0,0,0);R.render(S,C)})(0)})()}catch(e){$('#cv').remove()}
+
+/* ---------- cursor ---------- */
+const cu=$('#cu'),c2=$('#c2');let cx=0,cy=0,tx=0,ty=0,hx=0,hy=0;
+addEventListener('pointermove',e=>{tx=e.clientX;ty=e.clientY;mx=e.clientX/innerWidth*2-1;my=e.clientY/innerHeight*2-1;
+const t=e.target.closest&&e.target.closest('a,button,input,select,textarea');cu.classList.toggle('big',!!t);cu.textContent=t?(t.dataset.c||''):''});
+(function f(){cx+=(tx-cx)*.35;cy+=(ty-cy)*.35;hx+=(tx-hx)*.12;hy+=(ty-hy)*.12;
+cu.style.transform=`translate(${cx-cu.offsetWidth/2}px,${cy-cu.offsetHeight/2}px)`;c2.style.transform=`translate(${hx-30}px,${hy-30}px)`;requestAnimationFrame(f)})();
+addEventListener('pointerdown',e=>{if(RM)return;const r=document.createElement('div');r.className='rip';r.style.left=e.clientX-5+'px';r.style.top=e.clientY-5+'px';document.body.append(r);
+gsap.to(r,{scale:9,opacity:0,duration:.8,onComplete:()=>r.remove()})});
+
+/* ---------- pages ---------- */
+const fmt=s=>String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+const pages={
+home:{t:'dk',h:()=>`<section class="full"><p class="ey">Offline-first study planner</p><h1>Study in sprints.<br>Keep it close.</h1><p>A calm planner that lives on your device. No account, no connection needed.</p><div><a class="b p" href="#/get-started" data-c="start">Start your first Sprint</a></div></section>
+<section class="full r"><p class="ey">Focus</p><h2>One hour, held steady.</h2><p>Focus, Pomodoro and Deep Work timers that record every session for you.</p><div><a class="b" href="#/timer" data-c="open">Try the timer</a></div></section>
+<section class="full iv"><p class="ey">Remember</p><h2>Learn once.<br>Return on schedule.</h2><p>Revision intervals you set yourself, from first learning to mastery.</p><div><a class="b" href="#/revision" data-c="open">See the path</a></div></section>
+<section class="full r"><p class="ey">Prepare</p><h2>Count down with clarity.</h2><p>Each exam shows what is done and what is left.</p><div><a class="b" href="#/exams" data-c="open">Open exams</a></div></section>
+<section class="full iv"><p class="ey">Private</p><h2>Your data stays on your device.</h2><p>Nothing sold. Nothing collected you did not choose.</p><div><a class="b" href="#/offline-privacy" data-c="open">Open the vault</a></div></section>
+<section class="full"><h2>Ready when you are.</h2><div><a class="b p" href="#/get-started" data-c="start">Get started</a></div></section>`},
+timer:{t:'dk',h:()=>`<div class="pg"><p class="ey">Study Timer</p><h1>Hold the hour.</h1><div class="g" style="margin:2rem 0 0 auto;max-width:460px">
+<div class="row" id="tm"></div><svg class="ring" viewBox="0 0 260 260" style="margin-top:1rem"><circle cx="130" cy="130" r="110" fill="none" stroke="currentColor" stroke-opacity=".2" stroke-width="3"/><circle id="pr" cx="130" cy="130" r="110" fill="none" stroke="#C9A96A" stroke-width="5" stroke-linecap="round" stroke-dasharray="691.15" transform="rotate(-90 130 130)"/><text id="tt" x="130" y="142" text-anchor="middle">25:00</text></svg>
+<div class="row" style="justify-content:center;margin:1rem 0"><button class="b p" id="go" data-c="play">Start</button><button class="b" id="st">Stop</button><button class="b" id="rs">Reset</button></div>
+<label>Subject</label><select id="sj"><option>Mathematics</option><option>Science</option><option>English</option><option>Social Science</option><option>Hindi</option><option>Computer</option></select>
+<label>Custom focus minutes</label><input id="cm" type="number" min="1" max="240" placeholder="e.g. 40"><p style="margin-top:1rem;font-size:.85rem;color:var(--gr)">Sessions saved on this device: <b id="sn">0</b></p></div></div>`,i:timerInit},
+revision:{t:'iv',h:()=>`<div class="pg"><p class="ey">Revision Planner</p><h1>Learn once.<br>Return on schedule.</h1><div class="g" style="margin-top:2rem"><div class="sty" style="margin:0"><div><label>Topic</label><input id="rt" value="Motion"><label>Learned on</label><input id="rd" type="date" value="2026-10-06"></div>
+<div><label>Revision 1 after (days)</label><input id="r1" type="number" value="1" min="1"><label>Revision 2 after (days)</label><input id="r2" type="number" value="4" min="1"><label>Revision 3 after (days)</label><input id="r3" type="number" value="11" min="1"></div></div>
+<svg id="rp" viewBox="0 0 800 150" style="width:100%;margin-top:1.5rem"></svg></div>
+<div class="g" style="margin:2rem 0 0 auto;max-width:420px"><svg viewBox="-100 -100 200 200" style="width:100%"><path id="sp" fill="none" stroke="#C9A96A" stroke-width="1.5"/><circle r="5" fill="#9DB09A"><animateMotion dur="9s" repeatCount="indefinite" path="M0 0"/></circle></svg><p style="font-size:.85rem">Each return pulls the memory back toward the centre. Intervals widen as it strengthens.</p></div></div>`,i:revInit},
+exams:{t:'dk',h:()=>`<div class="pg"><p class="ey">Exams</p><h1>Count down with clarity.</h1><div class="sty"><div class="g"><h3>Add an exam</h3><label>Name</label><input id="en" placeholder="Mathematics Exam"><label>Date</label><input id="ed" type="date"><div class="row" style="margin-top:1rem"><button class="b p" id="ea">Add exam</button><button class="b" id="ex">Load example</button></div></div><div id="el"></div></div></div>`,i:examInit},
+'offline-privacy':{t:'iv',h:()=>`<div class="pg"><p class="ey">Offline-first &amp; privacy</p><h1>Your data stays<br>on your device.</h1><div class="sty"><div class="g"><p>No internet needed for normal use. No unnecessary data collection. No selling of data. No unnecessary permissions. Delete anything, any time, and export first.</p><div class="row" style="margin-top:1rem"><button class="b p" id="vo" data-c="open">Open the vault</button><button class="b" id="vd">Delete all my data</button></div></div><div class="g" id="vl"><p>The vault is closed. It holds subjects, chapters, tasks, exams, notes, flashcards, sessions, goals, progress and settings. This demo stores sessions, exams and setup answers.</p></div></div></div>`,i:privInit},
+'get-started':{t:'dk',h:()=>`<div class="pg"><p class="ey">Get Started</p><h1>Set up in six steps.</h1><div class="g" style="margin-top:2rem;max-width:560px;margin-left:auto" id="gs"></div></div>`,i:startInit}};
+
+function timerInit(){
+const M=[['Focus',25],['Pomodoro 25/5',25],['Pomodoro 50/10',50],['Deep Work 60',60],['Deep Work 90',90]];
+let tot=1500,left=1500,run=null,end=0,type='Focus';
+const draw=()=>{$('#tt').textContent=fmt(left);$('#pr').style.strokeDashoffset=691.15*(1-(tot-left)/tot);prog=(tot-left)/tot;$('#go').textContent=run?'Pause':(left<tot?'Resume':'Start')};
+const set=(m,n)=>{clearInterval(run);run=null;timerOn=false;tot=left=m*60;type=n;draw()};
+$('#tm').innerHTML=M.map((m,i)=>`<button class="b${i?'':' on'}" data-i="${i}">${m[0]}</button>`).join('');
+$$('#tm button').forEach(b=>b.onclick=()=>{$$('#tm button').forEach(x=>x.classList.remove('on'));b.classList.add('on');set(M[b.dataset.i][1],M[b.dataset.i][0])});
+$('#cm').onchange=e=>{const v=Math.min(240,Math.max(1,+e.target.value||25));$$('#tm button').forEach(x=>x.classList.remove('on'));set(v,'Focus (custom)')};
+$('#go').onclick=()=>{if(run){clearInterval(run);run=null;timerOn=false;left=Math.max(0,Math.round((end-Date.now())/1000))}else{timerOn=true;end=Date.now()+left*1000;
+run=setInterval(()=>{left=Math.max(0,Math.round((end-Date.now())/1000));draw();if(!left)fin()},250)}draw()};
+$('#rs').onclick=()=>set(tot/60,type);
+const fin=()=>{clearInterval(run);run=null;timerOn=false;draw();$('#md').style.display='grid'};
+$('#st').onclick=()=>{if(tot-left>0){clearInterval(run);run=null;timerOn=false;draw();$('#md').style.display='grid'}};
+$$('#mp button').forEach(b=>b.onclick=()=>{$$('#mp button').forEach(x=>x.classList.remove('on'));b.classList.add('on')});
+$('#mx').onclick=()=>$('#md').style.display='none';
+$('#ms').onclick=()=>{const l=LS.g('ss_sessions',[]);l.push({date:new Date().toISOString(),sec:tot-left,subject:$('#sj').value,chapter:$('#mw').value,type,productivity:$('#mp .on').textContent,notes:$('#mt').value});LS.s('ss_sessions',l);
+$('#md').style.display='none';$('#mw').value=$('#mt').value='';$('#sn').textContent=l.length;set(tot/60,type)};
+$('#sn').textContent=LS.g('ss_sessions',[]).length;draw()}
+
+function revInit(){
+const D=d=>d.toLocaleDateString('en-GB',{day:'numeric',month:'short'});
+const draw=()=>{const b=new Date($('#rd').value||'2026-10-06'),n=['r1','r2','r3'].map(i=>Math.max(1,+$('#'+i).value||1)),t=['Learned',...n.map((x,i)=>'Revision '+(i+1)),'Mastered'];
+const ds=[0,...n].map(x=>{const d=new Date(b);d.setDate(d.getDate()+x);return D(d)});ds.push('');
+$('#rp').innerHTML=`<path id="pl" d="M60 60H740" stroke="#C9A96A" stroke-width="2" fill="none"/>`+t.map((s,i)=>`<circle cx="${60+i*170}" cy="60" r="12" fill="${i==4?'#9DB09A':'none'}" stroke="${i==4?'#9DB09A':'#C9A96A'}" stroke-width="2"/><text x="${60+i*170}" y="100" text-anchor="middle" font-size="14" fill="currentColor">${s}</text><text x="${60+i*170}" y="122" text-anchor="middle" font-size="13" fill="#8A8F98">${ds[i]}</text>`).join('');
+const p=$('#pl');if(!RM){const L=p.getTotalLength();gsap.fromTo(p,{strokeDasharray:L,strokeDashoffset:L},{strokeDashoffset:0,duration:1.4})}};
+['rt','rd','r1','r2','r3'].forEach(i=>$('#'+i).oninput=draw);draw();
+let d='M0 0';for(let a=0;a<=18;a+=.2)d+=` L${(a*5*Math.cos(a)).toFixed(1)} ${(a*5*Math.sin(a)).toFixed(1)}`;$('#sp').setAttribute('d',d);
+$('animateMotion').setAttribute('path',d.replace(/ L/g,' L').split('').join('').replace('M0 0 L','M').replace(/^M/,'M'))}
+
+function examInit(){
+const names=['Number Systems','Polynomials','Coordinate Geometry','Statistics'];
+const draw=()=>{const l=LS.g('ss_exams',[]);$('#el').innerHTML=l.length?l.map((e,i)=>{const days=Math.ceil((new Date(e.d)-new Date().setHours(0,0,0,0))/864e5),pc=Math.round(e.c.reduce((a,x)=>a+x/2,0)/e.c.length*100);
+return `<div class="g" style="margin-bottom:1rem"><h3>${esc(e.n)}</h3><p>${days>=0?days+' days remaining':'Date passed'} · ${pc}% ready</p><div style="margin-top:.6rem">${e.c.map((x,j)=>`<div><button class="b" data-i="${i}" data-j="${j}" style="border:0;padding:.3rem 0;background:none"><span class="mk ${['','h','f'][x]}"></span>${esc(e.s[j])}</button></div>`).join('')}</div><button class="b" data-del="${i}" style="margin-top:.8rem">Remove</button></div>`}).join(''):'<div class="g"><p>No exams yet. Add one, or load the example.</p></div>';
+$$('#el [data-j]').forEach(b=>b.onclick=()=>{const l=LS.g('ss_exams',[]);l[b.dataset.i].c[b.dataset.j]=(l[b.dataset.i].c[b.dataset.j]+1)%3;LS.s('ss_exams',l);draw()});
+$$('#el [data-del]').forEach(b=>b.onclick=()=>{const l=LS.g('ss_exams',[]);l.splice(b.dataset.del,1);LS.s('ss_exams',l);draw()})};
+$('#ea').onclick=()=>{if(!$('#en').value||!$('#ed').value)return;const l=LS.g('ss_exams',[]);l.push({n:$('#en').value,d:$('#ed').value,s:names,c:[0,0,0,0]});LS.s('ss_exams',l);$('#en').value='';draw()};
+$('#ex').onclick=()=>{const d=new Date();d.setDate(d.getDate()+12);const l=LS.g('ss_exams',[]);l.push({n:'Mathematics Exam',d:d.toISOString().slice(0,10),s:names,c:[2,1,0,0]});LS.s('ss_exams',l);draw()};draw()}
+
+function privInit(){
+$('#vo').onclick=()=>{const o={sessions:LS.g('ss_sessions',[]),exams:LS.g('ss_exams',[]),setup:LS.g('ss_setup',{})};
+$('#vl').innerHTML=`<h3>Inside the vault</h3><p>${o.sessions.length} sessions · ${o.exams.length} exams · setup ${Object.keys(o.setup).length?'saved':'empty'}</p><label>Export (copy to back up)</label><textarea rows="6" readonly>${esc(JSON.stringify(o,null,1))}</textarea>`;if(!RM)gsap.from('#vl',{opacity:0,y:20})};
+$('#vd').onclick=()=>{if(confirm('Delete all Study Sprint data on this device?')){['ss_sessions','ss_exams','ss_setup'].forEach(k=>localStorage.removeItem(k));$('#vl').innerHTML='<p>Everything was deleted from this device.</p>'}}}
+
+function startInit(){
+const T=['Mathematics','Science','English','Social Science','Hindi','Computer'];let s=0;const D=LS.g('ss_setup',{subjects:[],goal:'1 hr'});
+const draw=()=>{const B=[`<h3>Welcome</h3><p>Study Sprint plans your study on this device. No school's syllabus is built in. Everything is yours to customise.</p>`,
+`<h3>About you</h3><label>Name</label><input id="a1" value="${esc(D.name||'')}"><label>Class</label><input id="a2" value="${esc(D.cls||'')}"><label>Academic year</label><input id="a3" value="${esc(D.yr||'')}">`,
+`<h3>Choose subjects</h3><div class="row">${T.map(x=>`<button class="b${D.subjects.includes(x)?' on':''}" data-t="${x}">${x}</button>`).join('')}</div><label>Custom subject</label><input id="a4" placeholder="Add your own">`,
+`<h3>Add your syllabus</h3><p>Type chapters yourself or import a backup later. Nothing is pre-filled.</p>`,
+`<h3>Daily goal</h3><div class="row">${['30 min','1 hr','2 hr'].map(x=>`<button class="b${D.goal==x?' on':''}" data-g="${x}">${x}</button>`).join('')}<input id="a5" placeholder="Custom" style="width:120px"></div>`,
+`<h3>You're ready</h3><p>${esc(D.name||'Student')}, your setup is saved on this device.</p><a class="b p" href="#/timer" data-c="start">Start your first Sprint</a>`];
+$('#gs').innerHTML=`<p class="ey">Step ${s+1} of 6</p>`+B[s]+`<div class="row" style="margin-top:1.4rem">${s?'<button class="b" id="bk">Back</button>':''}${s<5?'<button class="b p" id="nx">Next</button>':''}</div>`;
+$$('#gs [data-t]').forEach(b=>b.onclick=()=>{const t=b.dataset.t,i=D.subjects.indexOf(t);i<0?D.subjects.push(t):D.subjects.splice(i,1);b.classList.toggle('on')});
+$$('#gs [data-g]').forEach(b=>b.onclick=()=>{D.goal=b.dataset.g;$$('#gs [data-g]').forEach(x=>x.classList.toggle('on',x==b))});
+const sv=()=>{if($('#a1')){D.name=$('#a1').value;D.cls=$('#a2').value;D.yr=$('#a3').value}if($('#a4')&&$('#a4').value)D.subjects.push($('#a4').value);if($('#a5')&&$('#a5').value)D.goal=$('#a5').value;LS.s('ss_setup',D)};
+if($('#nx'))$('#nx').onclick=()=>{sv();s++;draw()};if($('#bk'))$('#bk').onclick=()=>{sv();s--;draw()}};draw()}
+
+/* ---------- router with glass-over-glass transition ---------- */
+function route(first){const k=(location.hash.replace('#/','')||'home'),p=pages[k]||pages.home,key=pages[k]?k:'home';
+const swap=()=>{cur=key;timerOn=false;document.body.className=p.t;$('#app').innerHTML=p.h()+'<footer>Study Sprint · offline-first · your data stays on your device</footer>';scrollTo(0,0);
+$$('#nv a').forEach(a=>a.classList.toggle('a',a.getAttribute('href')==='#/'+key));$('#nv').classList.remove('o');if(p.i)p.i();
+if(!RM)gsap.from('#app>*',{opacity:0,y:30,duration:.9,stagger:.12});
+$$('.full .ey,.full h1,.full h2,.full p,.full div').forEach(e=>e.classList.add('rv'));$$('.full').forEach(e=>new IntersectionObserver((en,o)=>en.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');o.unobserve(x.target)}}),{threshold:.3}).observe(e))};
+if(first||RM)return swap();gsap.timeline().to('#tr',{y:'0%',duration:.5,ease:'power3.inOut'}).add(swap).to('#tr',{y:'-101%',duration:.6,ease:'power3.inOut'}).set('#tr',{y:'101%'})}
+addEventListener('hashchange',()=>route());
+gsap.set('#tr',{y:'101%'});route(true);
+if(RM||sessionStorage.ss)$('#in').remove();else{sessionStorage.ss=1;gsap.fromTo('#in',{opacity:1},{opacity:0,delay:1.2,duration:.9,onComplete:()=>$('#in').remove()})}
+</script></body></html>
